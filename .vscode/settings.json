@@ -1,0 +1,49 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": false,
+  "editor.formatOnSaveMode": "file",
+  "files.autoSave": "onFocusChange",
+  "[handlebars]": {
+    "editor.formatOnSave": false
+  },
+  "cSpell.words": [
+    "aomori",
+    "baitai",
+    "categ",
+    "CATPRO",
+    "fukushima",
+    "iwate",
+    "MERUMAGA",
+    "miyagi",
+    "miyazaki",
+    "datetime",
+    "golevelup",
+    "KTAI",
+    "localstack",
+    "marketenterprise",
+    "myapp",
+    "mylib",
+    "Mypage",
+    "nestjs",
+    "OIKURA",
+    "oita",
+    "PARENET",
+    "ormconfig",
+    "pnpx",
+    "rgcm",
+    "rmrf",
+    "romaji",
+    "rpcm",
+    "SENDGRID",
+    "sonarqube",
+    "tailwindcss",
+    "typeorm",
+    "zustand",
+    "tinyint"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  }
+}
