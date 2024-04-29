@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import uniqid from 'uniqid';
-import FilterRow from './components/FilterRow';
 import Header from './components/Header';
 import ListItem from './components/ListItem';
-import ToggleCompleted from './components/ToggleCompleted';
+import { TodoFilterBox } from './components/TodoFilterBox';
+import { TodoFormAdd } from './components/TodoFormAdd';
 import { mapToSorted, removeInsert } from './utils/array';
 
 type Filter = 'all' | 'active' | 'completed';
@@ -102,23 +102,13 @@ function App() {
       <div className="py-12 px-6 md:mx-auto md:w-[40rem] md:px-0 md:pt-16 lg:pt-20">
         <Header />
 
-        <form
-          className="mt-6 mb-4 flex items-center rounded-md bg-white px-4 py-3 dark:bg-dark-blue lg:mt-12 lg:mb-6 lg:px-6 lg:py-4"
-          onSubmit={handleSubmit}
-        >
-          <ToggleCompleted
-            isCompleted={inputChecked}
-            onClick={(e) => setInputChecked(e.currentTarget.checked)}
-          />
-          <input
-            className="mt-1 ml-4 flex-1 text-sm outline-none dark:bg-dark-blue dark:text-gray-300 md:text-base"
-            placeholder="Create a new todos..."
-            required
-            pattern="[^\s]+(\s+[^\s]+)*"
-            value={inputTitle}
-            onChange={(e) => setInputTitle(e.currentTarget.value)}
-          />
-        </form>
+        <TodoFormAdd
+          inputTitle={inputTitle}
+          setInputTitle={setInputTitle}
+          inputChecked={inputChecked}
+          setInputChecked={setInputChecked}
+          handleSubmit={handleSubmit}
+        />
 
         <ul className="rounded-md bg-white shadow-xl dark:bg-dark-blue">
           {displayTodos.map((todo, index) => {
@@ -135,25 +125,12 @@ function App() {
             );
           })}
 
-          <li className="relative flex items-center justify-between px-4 py-3 text-xs text-slate-400 sm:text-sm">
-            <span>
-              {activeTodos.length} item{activeTodos.length > 1 && 's'} left
-            </span>
-
-            <div className="absolute left-0 top-14 flex w-full justify-center gap-4 rounded-md bg-white py-3 font-semibold capitalize dark:bg-dark-blue sm:static sm:w-auto sm:p-0">
-              <FilterRow
-                checkedValue={inputFilter}
-                onChange={handleInputFilter}
-              />
-            </div>
-
-            <button
-              className="hover:text-black dark:hover:text-white"
-              onClick={() => setTodos(activeTodos)}
-            >
-              Clear Completed
-            </button>
-          </li>
+          <TodoFilterBox
+            activeTodos={activeTodos}
+            inputFilter={inputFilter}
+            setTodos={setTodos}
+            handleInputFilter={handleInputFilter}
+          />
         </ul>
 
         <footer className="mt-20 text-center text-slate-400 sm:mt-10">
